@@ -32,4 +32,4 @@ StreamSubscription subscription = dropEventStream.listen((paths) {
 
 This plugin provides only one event stream.
 
-- `dropEventStream` (Stream<List<String>>) Send the item's path, one or more, that was dragged into the app window.
+- `dropEventStream` (`Stream<List<String>>`) Send the item's path, one or more, that was dragged into the app window.
