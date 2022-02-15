@@ -40,8 +40,8 @@ class DragAndDropWindowsPlugin : public flutter::Plugin {
 void DragAndDropWindowsPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows *registrar) {
   auto plugin = std::make_unique<DragAndDropWindowsPlugin>(registrar->messenger());
-  flutter::WindowProcDelegate delegate([&plugin](HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
-    return plugin->MessageHandler(hwnd, message, wparam, lparam);
+  flutter::WindowProcDelegate delegate([plugin_pointer = plugin.get()](HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
+    return plugin_pointer->MessageHandler(hwnd, message, wparam, lparam);
   });
 
   registrar->RegisterTopLevelWindowProcDelegate(delegate);
