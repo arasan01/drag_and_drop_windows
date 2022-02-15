@@ -2,21 +2,34 @@
 
 A Flutter plugin that adds drag-and-drop functionality for windows.
 
-## Now Trouble
+![](https://github.com/arasan01/drag_and_drop_windows/blob/main/.github/preview.gif)
 
-After the app window reads the path of the dragged item, it outputs sigterm to stop the app from stopping when it tries to return a value using `event_sink_`.
-My guess is that it's failing around NotImplement, such as EventSink not being implemented because it's not FlutterEngine when it receives a messenger as a plugin, and that PluginRegistrar can't access apps such as EventSink.
+_Example app running on Microsoft Windows 11 (Debug)_
 
-## Dig source code
+## Installation
 
-Main C++ Code:
-```
-windows/include/drag_and_drop_windows/drag_and_drop_windows_plugin.h
-windows/drag_and_drop_windows_plugin.cpp
+```yaml
+dependencies:
+  drag_and_drop_windows: ^0.0.1
 ```
 
-Main Dart Code:
-```
-lib/src/drag_and_drop_event.dart
+or
+
+```shell
+$ flutter pub add drag_and_drop_windows
 ```
 
+Subscribe to the drop event stream.
+
+```dart
+import 'package:drag_and_drop_windows/drag_and_drop_windows.dart';
+StreamSubscription subscription = dropEventStream.listen((paths) {
+  // something to do
+});
+```
+
+## API
+
+This plugin provides only one event stream.
+
+- `dropEventStream` (Stream<List<String>>) Send the item's path, one or more, that was dragged into the app window.
