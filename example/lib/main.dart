@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _subscription ??= dd.DragAndDropWindows.dragEventStream.listen((paths) {
+    _subscription ??= dd.dropEventStream.listen((paths) {
       setState(() {
         _paths = paths.join('\n');
       });

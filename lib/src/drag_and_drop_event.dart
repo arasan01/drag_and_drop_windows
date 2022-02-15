@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 
-class DragAndDropWindows {
-  static const EventChannel _eventChannel =
-      EventChannel('drag_and_drop_windows');
+const EventChannel _eventChannel = EventChannel('drag_and_drop_windows');
 
-  static final Stream<List<String>> _dragEventStream = _eventChannel
-      .receiveBroadcastStream()
-      .map((event) => List<String>.from(event))
-      .asBroadcastStream();
+final Stream<List<String>> _dropEventStream = _eventChannel
+    .receiveBroadcastStream()
+    .map((event) => List<String>.from(event))
+    .asBroadcastStream();
 
-  static Stream<List<String>> get dragEventStream => _dragEventStream;
-}
+/// Listen the drop event at [path]
+///
+/// This Stream will never send out an Error. It will always return data.
+/// This Stream will always receive events from when the application
+/// is started until it is terminated.
+Stream<List<String>> get dropEventStream => _dropEventStream;
