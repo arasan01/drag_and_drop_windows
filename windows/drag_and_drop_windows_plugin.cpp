@@ -28,8 +28,6 @@ class DragAndDropWindowsPlugin : public flutter::Plugin {
 
   DragAndDropWindowsPlugin(flutter::BinaryMessenger* messenger);
 
-  virtual ~DragAndDropWindowsPlugin();
-
   private:
     std::optional<LRESULT> MessageHandler(HWND window, UINT const message, WPARAM const wparam, LPARAM const lparam) noexcept;
     std::unique_ptr<flutter::EventSink<flutter::EncodableValue>> event_sink_;
@@ -68,10 +66,6 @@ DragAndDropWindowsPlugin::DragAndDropWindowsPlugin(flutter::BinaryMessenger* mes
       }
   );
   event_channel_->SetStreamHandler(std::move(handler));
-}
-
-DragAndDropWindowsPlugin::~DragAndDropWindowsPlugin() {
-  event_channel_->SetStreamHandler(nullptr);
 }
 
 std::optional<LRESULT> DragAndDropWindowsPlugin::MessageHandler(HWND window, UINT const message, WPARAM const wparam, LPARAM const lparam) noexcept {
