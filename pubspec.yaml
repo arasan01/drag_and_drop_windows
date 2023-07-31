@@ -1,10 +1,10 @@
 name: drag_and_drop_windows
 description: A Flutter plugin that adds drag-and-drop functionality for windows.
 repository: https://github.com/arasan01/drag_and_drop_windows
-version: 0.0.2
+version: 0.0.3
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
+  sdk: ">=2.14.0 <4.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
